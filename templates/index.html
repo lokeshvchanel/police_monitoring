@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Police GPS Monitoring Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #1c2d47;
+      }
+
+      h1 {
+        text-align: center;
+        color: #ffffff;
+      }
+
+      .table-container {
+        margin-top: 30px;
+      }
+
+      h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .scrollable-table {
+        overflow-x: auto;
+        max-width: 100%;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 14px;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #1c2d47;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #1c2d47;
+      }
+      tbody tr:hover {
+        background-color: #2f486e;
+      }
+
+      .response-log-container {
+        margin-top: 30px;
+      }
+
+      .scrollable-response-log {
+        max-height: 300px;
+        overflow-y: auto;
+      }
+
+      .response-log-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+
+      .response-log-table th,
+      .response-log-table td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #ddd;
+      }
+
+      .response-log-table th {
+        background-color: #3498db;
+      }
+
+      tbody.response-log tr:nth-child(even) {
+        background-color: #f3f3f3;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Police Monitoring Dashboard</h1>
+
+    <!-- Call Log Section -->
+    <div class="table-container">
+      <h2>Call Logs</h2>
+      <div class="scrollable-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Phone Number</th>
+              <th>Date & Time</th>
+              <th>Duration</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>+919876543210</td>
+              <td>2024-09-10 09:15</td>
+              <td>02:15</td>
+              <td>Incoming</td>
+            </tr>
+            <tr>
+              <td>+918123456789</td>
+              <td>2024-09-10 10:20</td>
+              <td>01:05</td>
+              <td>Outgoing</td>
+            </tr>
+            <tr>
+              <td>+917123456789</td>
+              <td>2024-09-10 11:30</td>
+              <td>00:00</td>
+              <td>Missed</td>
+            </tr>
+            <tr>
+              <td>+919888888888</td>
+              <td>2024-09-10 12:45</td>
+              <td>03:10</td>
+              <td>Incoming</td>
+            </tr>
+            <tr>
+              <td>+917654321234</td>
+              <td>2024-09-10 14:05</td>
+              <td>00:55</td>
+              <td>Outgoing</td>
+            </tr>
+            <tr>
+              <td>+918976543210</td>
+              <td>2024-09-10 15:25</td>
+              <td>00:00</td>
+              <td>Missed</td>
+            </tr>
+            <tr>
+              <td>+919123456789</td>
+              <td>2024-09-10 16:40</td>
+              <td>04:20</td>
+              <td>Incoming</td>
+            </tr>
+            <tr>
+              <td>+917777777777</td>
+              <td>2024-09-10 17:50</td>
+              <td>00:35</td>
+              <td>Outgoing</td>
+            </tr>
+            <tr>
+              <td>+918765432109</td>
+              <td>2024-09-10 18:15</td>
+              <td>01:45</td>
+              <td>Incoming</td>
+            </tr>
+            <tr>
+              <td>+916543210987</td>
+              <td>2024-09-10 19:05</td>
+              <td>00:00</td>
+              <td>Missed</td>
+            </tr>
+            <tr>
+              <td>+919876541234</td>
+              <td>2024-09-10 20:25</td>
+              <td>02:00</td>
+              <td>Outgoing</td>
+            </tr>
+            <tr>
+              <td>+918123498765</td>
+              <td>2024-09-10 21:35</td>
+              <td>01:20</td>
+              <td>Incoming</td>
+            </tr>
+            <tr>
+              <td>+917654312345</td>
+              <td>2024-09-10 22:40</td>
+              <td>03:05</td>
+              <td>Outgoing</td>
+            </tr>
+            <tr>
+              <td>+919123409876</td>
+              <td>2024-09-10 23:50</td>
+              <td>00:00</td>
+              <td>Missed</td>
+            </tr>
+            <tr>
+              <td>+917001122334</td>
+              <td>2024-09-11 00:10</td>
+              <td>00:50</td>
+              <td>Incoming</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- GPS Location Records -->
+    <div class="table-container">
+      <h2>GPS Location Records</h2>
+      <div class="scrollable-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Latitude</th>
+              <th>Longitude</th>
+              <th>Date & Time</th>
+              <th>Location</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in data %}
+            <tr>
+              <td>{{ row[0] }}</td>
+              <td>{{ row[1] }}</td>
+              <td>{{ row[2] }}</td>
+              <td>{{ row[3] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Response Log Section -->
+    <div class="table-container">
+      <div class="response-log-container">
+        <h2>Call Response Logs</h2>
+        <div class="scrollable-response-log">
+          <table class="response-log-table">
+            <thead>
+              <tr>
+                <th>Phone Number</th>
+                <th>Date & Time</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>+919876543210</td>
+                <td>2024-09-10 09:15</td>
+                <td>Unsolved</td>
+              </tr>
+              <tr>
+                <td>+918123456789</td>
+                <td>2024-09-10 10:20</td>
+                <td>Solved</td>
+              </tr>
+              <tr>
+                <td>+917123456789</td>
+                <td>2024-09-10 11:30</td>
+                <td>Unsolved</td>
+              </tr>
+              <tr>
+                <td>+919888888888</td>
+                <td>2024-09-10 12:45</td>
+                <td>Solved</td>
+              </tr>
+              <tr>
+                <td>+917654321234</td>
+                <td>2024-09-10 14:05</td>
+                <td>Solved</td>
+              </tr>
+              <tr>
+                <td>+918976543210</td>
+                <td>2024-09-10 15:25</td>
+                <td>Unsolved</td>
+              </tr>
+              <tr>
+                <td>+919123456789</td>
+                <td>2024-09-10 16:40</td>
+                <td>Solved</td>
+              </tr>
+              <tr>
+                <td>+917777777777</td>
+                <td>2024-09-10 17:50</td>
+                <td>Solved</td>
+              </tr>
+              <tr>
+                <td>+918765432109</td>
+                <td>2024-09-10 18:15</td>
+                <td>Unsolved</td>
+              </tr>
+              <tr>
+                <td>+916543210987</td>
+                <td>2024-09-10 19:05</td>
+                <td>Unsolved</td>
+              </tr>
+              <tr>
+                <td>+919876541234</td>
+                <td>2024-09-10 20:25</td>
+                <td>Solved</td>
+              </tr>
+              <tr>
+                <td>+918123498765</td>
+                <td>2024-09-10 21:35</td>
+                <td>Solved</td>
+              </tr>
+              <tr>
+                <td>+917654312345</td>
+                <td>2024-09-10 22:40</td>
+                <td>Unsolved</td>
+              </tr>
+              <tr>
+                <td>+919123409876</td>
+                <td>2024-09-10 23:50</td>
+                <td>Unsolved</td>
+              </tr>
+              <tr>
+                <td>+917001122334</td>
+                <td>2024-09-11 00:10</td>
+                <td>Solved</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
