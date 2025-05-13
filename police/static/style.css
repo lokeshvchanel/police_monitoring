@@ -1,0 +1,107 @@
+/* Reset some default styling */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body styling */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1c2d47, #1c2d47);
+  color: #fdfdfd;
+  padding: 20px;
+}
+
+/* Page Title */
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #f8f9f9;
+  font-size: 2.5rem;
+}
+
+/* Section container (Call Log, GPS Log, Response Log) */
+.table-container {
+  margin-bottom: 40px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgb(237, 234, 234);
+}
+
+/* Section titles */
+.table-container h2 {
+  margin-bottom: 15px;
+  color: #ffffff; /* Set to white */
+  font-size: 1.6rem;
+  padding-bottom: 5px;
+  background: none;
+  border: none;
+}
+
+/* Scrollable table wrapper */
+.scrollable-table {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #fafafa;
+  border-radius: 5px;
+  background-color: #1c2d47;
+}
+
+/* Table base styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #1c2d47;
+}
+
+/* Table headers */
+thead th {
+  position: sticky;
+  top: 0;
+  background-color: #3498db;
+  color: rgb(255, 255, 255);
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+}
+
+/* Table rows and cells */
+tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #25375c;
+}
+
+tbody tr:hover {
+  background-color: #2f486e;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #444;
+  font-size: 0.95rem;
+  color: #fffcfc;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .table-container h2 {
+    font-size: 1.3rem;
+  }
+
+  td,
+  th {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+}
